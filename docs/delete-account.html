@@ -20,17 +20,23 @@
   <br>
   <button onclick="sendEmail()">Demander la suppression</button>
 
-  <script>
-    function sendEmail() {
-      const email = document.getElementById('email').value;
-      if (!email) {
-        alert('Veuillez renseigner une adresse e-mail.');
-        return;
-      }
-      const subject = encodeURIComponent("Demande suppression de compte");
-      const body = encodeURIComponent(`Bonjour,\n\nJe souhaite supprimer mon compte lié à l’adresse : ${email}\n\nMerci.`);
-      window.location.href = `mailto:contact@edilud.com?subject=${subject}&body=${body}`;
+<script>
+  function sendEmail() {
+    const rawEmail = document.getElementById('email').value;
+    if (!rawEmail) {
+      alert('Veuillez renseigner une adresse e-mail.');
+      return;
     }
-  </script>
+
+    const email = encodeURIComponent(rawEmail);
+    const subject = encodeURIComponent("Demande suppression de compte");
+    const body = encodeURIComponent(`Bonjour,
+
+Je souhaite supprimer mon compte lié à l’adresse : ${rawEmail}
+
+Merci.`);
+    window.location.href = `mailto:contact@edilud.com?subject=${subject}&body=${body}`;
+  }
+</script>
 </body>
 </html>
