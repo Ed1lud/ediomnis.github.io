@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Suppression de compte – Pintade</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body { font-family: Arial, sans-serif; text-align: center; padding: 40px; }
+    input[type="email"] { padding: 10px; width: 300px; margin: 20px 0; }
+    button { padding: 10px 20px; background: #e74c3c; color: white; border: none; cursor: pointer; }
+    button:hover { background: #c0392b; }
+  </style>
+</head>
+<body>
+  <h1>Demande de suppression de compte</h1>
+  <p>Vous pouvez demander la suppression de votre compte associé à l'application Pintade.</p>
+  <p>Pour cela, renseignez votre adresse e-mail ci-dessous, puis cliquez sur le bouton.</p>
+
+  <input type="email" id="email" placeholder="Votre adresse e-mail" required />
+  <br>
+  <button onclick="sendEmail()">Demander la suppression</button>
+
+  <script>
+    function sendEmail() {
+      const email = document.getElementById('email').value;
+      if (!email) {
+        alert('Veuillez renseigner une adresse e-mail.');
+        return;
+      }
+      const subject = encodeURIComponent("Demande suppression de compte");
+      const body = encodeURIComponent(`Bonjour,\n\nJe souhaite supprimer mon compte lié à l’adresse : ${email}\n\nMerci.`);
+      window.location.href = `mailto:contact@edilud.com?subject=${subject}&body=${body}`;
+    }
+  </script>
+</body>
+</html>
